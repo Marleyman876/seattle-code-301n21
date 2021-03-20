@@ -112,15 +112,16 @@ let sum = function(a, b, c, d) {
   return a + b + c + d;
 };
 
-const oneLinerAddition = (a, b, c, d) =>`${a + b + c + d}`; //refactor
- 
-console.log('Refactored:', oneLinerAddition(5, 5, 5, 5)); //refactor 
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 console.log(sum(1, 2, 3, 4));
+ 
+const oneLinerAddition = (a, b, c, d) => a + b + c + d; //refactor
+ 
+console.log('Refactored:', oneLinerAddition(5, 5, 5, 5)); //refactor 
+///////
 
-
-let objectLit = function() {
+let objectLit = () => {
   return {
     key1: 'value1',
     key2: 'value2',
@@ -128,12 +129,12 @@ let objectLit = function() {
   };
 };
 
-
+ 
 // TODO: Uncomment the following line of code to see the output in the browser console
  console.log(objectLit());
 
 
-let sumAndProduct = function(a, b) {
+let sumAndProduct = (a, b) => {
   let sum = a + b;
   let product = a * b;
   return [sum, product];
@@ -143,7 +144,7 @@ let sumAndProduct = function(a, b) {
 console.log(sumAndProduct(3, 9));
 
 
-let message = function(name) {
+let message = (name) => {
   return `Hello, ${name}!`;
 };
 
@@ -151,13 +152,26 @@ let message = function(name) {
  console.log(message('Allie'));
 
 
-let Student = function(name, age, hometown) {
-  this.name = name;
-  this.age = age;
-  this.hometown = hometown;
-};
+// let Student = function(name, age, hometown) {
+//   this.name = name;
+//   this.age = age;
+//   this.hometown = hometown;
+// };
 
+
+//new way
+
+class Student{
+  constructor(name, age, hometown){
+    this.name = name;
+    this.age = age;
+    this.hometown = hometown;
+    
+  }
+  
+}
 let joe = new Student('Joe', 'Schmoe', 100);
+console.log(joe)
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 // Note that the arrow function will cause this code to break!
@@ -179,9 +193,7 @@ Student.prototype.greeting = function() {
 
 
 
-Student.courseName = function() {
-  return 'This student is enrolled in Code 301.';
-};
+Student.courseName = () => 'This student is enrolled in Code 301.';
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 console.log(Student.courseName());
@@ -205,6 +217,7 @@ Student.prototype.scopeArrow = () => console.log(this);
 // TODO: Write a COMMENT below to answer the following questions.
 // 1. What is "this" when joe.scope() is invoked?
 // "this" is undefined
+
 // 2. What is "this" when joe.scopeArrow() is invoked?
 // it comes back as undefined however a number of objects were returned. 
 // 3. Explain why "this" is different when an arrow function is used.
